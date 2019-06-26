@@ -9,7 +9,7 @@
           class="pic"
           @click="() => show(index)"
         >
-          <img :src="src">
+          <img :src="src.path">
         </div>
       </div>
 
@@ -18,7 +18,11 @@
         :index="index"
         :imgs="imgs"
         @hide="handleHide"
-      ></vue-easy-lightbox>
+      >
+      <template v-slot:visibleImage="slotProps">
+        <img :src="slotProps.image.path"/>
+      </template>
+      </vue-easy-lightbox>
     </div>
   </div>
 </template>
@@ -28,11 +32,21 @@
     data () {
       return {
         imgs: [
-          'https://i.loli.net/2018/11/10/5be6852cdb002.jpeg',
-          'https://i.loli.net/2018/11/10/5be6852ce6965.jpeg',
-          'https://i.loli.net/2018/11/10/5be6852dec46e.jpeg',
-          'https://i.loli.net/2018/11/10/5be6852e1366d.jpeg',
-          'https://i.loli.net/2018/11/10/5be6852e33f19.jpeg'
+          {
+            path: 'https://i.loli.net/2018/11/10/5be6852cdb002.jpeg'
+          },
+          {
+            path: 'https://i.loli.net/2018/11/10/5be6852ce6965.jpeg'
+          },
+          {
+            path: 'https://i.loli.net/2018/11/10/5be6852dec46e.jpeg'
+          },
+          {
+            path: 'https://i.loli.net/2018/11/10/5be6852e1366d.jpeg'
+          },
+          {
+            path: 'https://i.loli.net/2018/11/10/5be6852e33f19.jpeg'
+          }
         ],
         visible: false,
         index: 0 // default

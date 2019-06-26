@@ -10,15 +10,17 @@
         :class="{transition: imgTransitionStatus}"
         :style="imgStyle"
       >
-        <img
-          class="img"
-          :src="visibleImgSrc"
-          alt=""
-          draggable="false"
-          @mousedown="handleMouseDown($event)"
-          @mouseup="handleMouseUp($event)"
-          @mousemove="handleMouseMove($event)"
-        >
+        <slot name="visibleImage" :image="visibleImgSrc" >
+          <img
+            class="img"
+            :src="visibleImgSrc"
+            alt=""
+            draggable="false"
+            @mousedown="handleMouseDown($event)"
+            @mouseup="handleMouseUp($event)"
+            @mousemove="handleMouseMove($event)"
+          >
+        </slot>
       </div>
 
       <!-- btns -->
